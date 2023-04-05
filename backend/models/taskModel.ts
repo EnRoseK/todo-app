@@ -7,20 +7,17 @@ interface TaskInterface {
   categories?: string[];
 }
 
-const TaskSchema = new Schema<TaskInterface>(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: String,
-    isDone: {
-      type: Boolean,
-      default: false,
-    },
-    categories: [{ type: Schema.Types.ObjectId, ref: 'category' }],
+const TaskSchema = new Schema<TaskInterface>({
+  title: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+  description: String,
+  isDone: {
+    type: Boolean,
+    default: false,
+  },
+  categories: [{ type: Schema.Types.ObjectId, ref: 'category' }],
+});
 
 export default model<TaskInterface>('task', TaskSchema);
